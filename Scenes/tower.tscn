@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7w8w6t8w03sm"]
+
+[ext_resource type="Script" path="res://Scripts/tower.gd" id="1_7apk6"]
+[ext_resource type="Texture2D" uid="uid://ouxp08vs6sdh" path="res://assets/Kenney/PNG/Default size/towerDefense_tile291.png" id="1_jsvww"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tt02d"]
+radius = 159.0
+height = 448.0
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_7apk6")
+
+[node name="Tower" type="Sprite2D" parent="."]
+texture = ExtResource("1_jsvww")
+
+[node name="Marker2D" type="Marker2D" parent="Tower"]
+position = Vector2(30, -1)
+
+[node name="Defence" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Defence"]
+shape = SubResource("CapsuleShape2D_tt02d")
+
+[connection signal="area_entered" from="Defence" to="." method="_on_defence_area_entered"]
+[connection signal="body_entered" from="Defence" to="." method="_on_defence_body_entered"]
+[connection signal="body_exited" from="Defence" to="." method="_on_defence_body_exited"]

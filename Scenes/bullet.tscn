@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4k8j1bd6aiu0"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_p37a3"]
+[ext_resource type="Texture2D" uid="uid://dhyupe8f7yyc4" path="res://assets/Kenney/PNG/Default size/towerDefense_tile272.png" id="2_d240v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_haxsw"]
+radius = 8.0
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_p37a3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d240v")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_haxsw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

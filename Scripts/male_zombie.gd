@@ -1,5 +1,7 @@
-extends CharacterBody2D
+extends Node2D
 
+
+# Called when the node enters the scene tree for the first time.
 @export var speed = 50
 
 
