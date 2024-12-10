@@ -4392,7 +4392,14 @@ progress = 317.51
 
 [node name="MaleZombie" parent="Path2D/PathFollow2D" instance=ExtResource("2_43gpd")]
 position = Vector2(-2.5097, 2)
-collision_mask = 3
 
 [node name="Tower" parent="." instance=ExtResource("5_5ggf6")]
 position = Vector2(-671, -227)
+
+[node name="Tower2" parent="." instance=ExtResource("5_5ggf6")]
+position = Vector2(-352, 97)
+rotation = -1.5708
+
+[node name="Tower3" parent="." instance=ExtResource("5_5ggf6")]
+position = Vector2(-353, -97)
+rotation = 1.5708

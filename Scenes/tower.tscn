@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tt02d"]
 radius = 159.0
-height = 448.0
+height = 332.0
 
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_7apk6")
@@ -17,6 +17,7 @@ texture = ExtResource("1_jsvww")
 position = Vector2(30, -1)
 
 [node name="Defence" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Defence"]
 shape = SubResource("CapsuleShape2D_tt02d")

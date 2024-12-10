@@ -15,6 +15,5 @@ func _physics_process(delta: float) -> void:
 func _on_defence_body_entered(body: Node2D) -> void:
 	enemy_body = body
 
-
 func _on_defence_body_exited(body: Node2D) -> void:
 	enemy_body = null

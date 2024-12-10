@@ -47,6 +47,10 @@
 [ext_resource type="Texture2D" uid="uid://bxtael4tb4ady" path="res://assets/Zombie/male/Walk (9).png" id="44_11sob"]
 [ext_resource type="Texture2D" uid="uid://dflstmdwik0jf" path="res://assets/Zombie/male/Walk (10).png" id="45_u1whx"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv2k7"]
+radius = 27.0
+height = 102.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_skge7"]
 animations = [{
 "frames": [{
@@ -205,35 +209,32 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlklc"]
-radius = 19.0
-height = 96.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdslw"]
-radius = 132.981
-height = 709.555
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubjw4"]
+radius = 146.979
+height = 694.773
 
 [node name="MaleZombie" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_kpi6q")
+
+[node name="ImpactDetector" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
+position = Vector2(-3, 5)
+shape = SubResource("CapsuleShape2D_dv2k7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.234593, 0.22435)
 sprite_frames = SubResource("SpriteFrames_skge7")
-animation = &"walk"
+animation = &"dead"
 autoplay = "walk"
-frame_progress = 0.0518739
-
-[node name="ImpactDetector" type="Area2D" parent="AnimatedSprite2D"]
-scale = Vector2(4.2627, 4.45732)
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/ImpactDetector"]
-position = Vector2(-8, 6)
-shape = SubResource("CapsuleShape2D_dlklc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 6)
+position = Vector2(-6, 6)
 scale = Vector2(0.142878, 0.135296)
-shape = SubResource("CapsuleShape2D_mdslw")
+shape = SubResource("CapsuleShape2D_ubjw4")
+one_way_collision_margin = 0.0
 
-[connection signal="body_entered" from="AnimatedSprite2D/ImpactDetector" to="." method="_on_impact_detector_body_entered"]
+[connection signal="area_entered" from="ImpactDetector" to="." method="_on_impact_detector_area_entered"]
+[connection signal="body_entered" from="ImpactDetector" to="." method="_on_impact_detector_body_entered"]

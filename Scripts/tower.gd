@@ -8,11 +8,10 @@ var BULLET = preload("res://Scenes/bullet.tscn")
 var enemy_body = null
 var is_threat = false
 
-var fire_rate = 1
-var timer =0.5
+var fire_rate = 1.0
+var timer = 0.75
 
 func _process(delta: float) -> void:
-	#pass
 	if enemy_body != null:
 		timer+=delta
 		if timer>= fire_rate:
@@ -22,14 +21,10 @@ func _process(delta: float) -> void:
 			bullet_instance.global_position=marker_2d.global_position
 			#bullet_instance.rotation=rotation
 			get_tree().root.add_child(bullet_instance)
-			timer=0.5
-	#else:
-		#tower.rotation_degrees = 0
+			timer=0.75
 
 func _on_defence_body_entered(body: Node2D) -> void:
 	enemy_body = body
-	#print(body.name)
-
 
 func _on_defence_body_exited(body: Node2D) -> void:
 	enemy_body = null
