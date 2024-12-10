@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bknoq4ut0eml8"]
 
 [ext_resource type="Texture2D" uid="uid://csdjcfpvdblg1" path="res://assets/Kenney/Vector/towerDefense_vector.svg" id="1_s6noy"]
-[ext_resource type="PackedScene" uid="uid://dr2h7fbtbk8bg" path="res://Scenes/male_zombie.tscn" id="2_yi2oq"]
+[ext_resource type="PackedScene" uid="uid://c5mhdt2u45eyv" path="res://Scenes/maleZombie.tscn" id="2_43gpd"]
 [ext_resource type="PackedScene" uid="uid://b7w8w6t8w03sm" path="res://Scenes/tower.tscn" id="5_5ggf6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rs6y"]
@@ -4390,7 +4390,9 @@ curve = SubResource("Curve2D_1dgqs")
 position = Vector2(-834.49, -448)
 progress = 317.51
 
-[node name="MaleZombie" parent="Path2D/PathFollow2D" instance=ExtResource("2_yi2oq")]
+[node name="MaleZombie" parent="Path2D/PathFollow2D" instance=ExtResource("2_43gpd")]
+position = Vector2(-2.5097, 2)
+collision_mask = 3
 
 [node name="Tower" parent="." instance=ExtResource("5_5ggf6")]
 position = Vector2(-671, -227)

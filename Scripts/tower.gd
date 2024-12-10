@@ -8,27 +8,28 @@ var BULLET = preload("res://Scenes/bullet.tscn")
 var enemy_body = null
 var is_threat = false
 
+var fire_rate = 1
+var timer =0.5
+
 func _process(delta: float) -> void:
 	#pass
 	if enemy_body != null:
-		tower.look_at(enemy_body.global_position)
-		var bullet_instance = BULLET.instantiate()
-		bullet_instance.direction = (enemy_body.global_position - marker_2d.global_position).normalized()
-		bullet_instance.global_position=marker_2d.global_position
-		#bullet_instance.rotation=rotation
-		get_tree().root.add_child(bullet_instance)
+		timer+=delta
+		if timer>= fire_rate:
+			tower.look_at(enemy_body.global_position)
+			var bullet_instance = BULLET.instantiate()
+			bullet_instance.direction = (enemy_body.global_position - marker_2d.global_position).normalized()
+			bullet_instance.global_position=marker_2d.global_position
+			#bullet_instance.rotation=rotation
+			get_tree().root.add_child(bullet_instance)
+			timer=0.5
 	#else:
 		#tower.rotation_degrees = 0
 
 func _on_defence_body_entered(body: Node2D) -> void:
 	enemy_body = body
-	print(body.name)
+	#print(body.name)
 
 
 func _on_defence_body_exited(body: Node2D) -> void:
 	enemy_body = null
-
-
-func _on_defence_area_entered(area: Area2D) -> void:
-	enemy_body = area.body_entered.get_object()
-	print(enemy_body.name)
